@@ -1,0 +1,382 @@
+:root {
+    --primary-color: #ff69b4;
+    --bg-color: #ffffff;
+    --text-color: #1f2937;
+    --hover-color: #ff8dc7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: 
+        linear-gradient(180deg, rgba(255, 229, 240, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%),
+        linear-gradient(120deg, rgba(255, 182, 193, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%),
+        linear-gradient(60deg, rgba(255, 192, 203, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%),
+        url('images/联想截图_20241116213334.png');
+    background-size: 
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%;
+    background-repeat: no-repeat;
+    background-position: 
+        center center,
+        center center,
+        center center,
+        center center;
+    background-attachment: fixed;
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.profile {
+    margin-bottom: 2rem;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.bio {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: #666;
+    max-width: 400px;
+    margin: 0 auto 2rem;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.skill-tag {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: transform 0.2s;
+}
+
+.skill-tag:hover {
+    transform: translateY(-2px);
+    background: var(--hover-color);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.social-icon {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+    background: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .skills {
+        gap: 0.5rem;
+    }
+
+    .skill-tag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* 更新照片展示区样式和动画效果 */
+.photo-gallery {
+    margin: 3rem 0;
+    width: 100%;
+}
+
+.photo-gallery h2 {
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    filter: brightness(1);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* 悬停效果 */
+.gallery-grid img:hover {
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+    z-index: 1;
+}
+
+/* 点击效果 */
+.gallery-grid img:active {
+    transform: scale(0.98);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* 为每行图片设置不同的延迟，创造瀑布效果 */
+.gallery-grid img:nth-child(3n + 1) { animation-delay: 0.1s; }
+.gallery-grid img:nth-child(3n + 2) { animation-delay: 0.2s; }
+.gallery-grid img:nth-child(3n + 3) { animation-delay: 0.3s; }
+
+/* 定义动画关键帧 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 添加平滑动效果 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 更新响应式布局 */
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .gallery-grid img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .gallery-grid img {
+        height: 350px;
+    }
+}
+
+/* 更新模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.modal-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-prev {
+    left: 20px;
+}
+
+.modal-next {
+    right: 20px;
+}
+
+/* 添加表情动画样式 */
+#emojis-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.floating-emoji {
+    position: absolute;
+    font-size: 20px;
+    user-select: none;
+    pointer-events: none;
+    animation: floatEmoji 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
+}
+
+@keyframes floatEmoji {
+    0% {
+        transform: translate(0, 0) rotate(0) scale(0.8);
+        opacity: 0.6;
+    }
+    10% {
+        transform: translate(0, -5px) rotate(10deg) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(var(--x, 20px), -40px) rotate(var(--r, 30deg)) scale(0.9);
+        opacity: 0;
+    }
+}
+
+/* 为每个表情设置随机的动画变量 */
+.floating-emoji {
+    --x: 0px;
+    --r: 0deg;
+}
+
+/* 添加爱心动画样式 */
+.floating-heart {
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    z-index: 9999;
+    animation: floatHeart 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    filter: drop-shadow(0 0 5px rgba(255, 192, 203, 0.3));
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translate(0, 0) rotate(0) scale(0.2);
+        opacity: 0.8;
+    }
+    25% {
+        transform: translate(calc(var(--offset-x) * 0.3), calc(var(--distance) * -0.3)) 
+                  rotate(calc(var(--rotation) * 0.3)) 
+                  scale(1.2);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(var(--offset-x), calc(var(--distance) * -0.8)) 
+                  rotate(var(--rotation)) 
+                  scale(0.8);
+        opacity: 0;
+    }
+}
+ 
